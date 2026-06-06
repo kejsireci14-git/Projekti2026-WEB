@@ -1,0 +1,150 @@
+.appts-hero {
+    background: linear-gradient(135deg, var(--charcoal) 0%, #3D3430 100%);
+    padding: 4rem 0 3rem;
+    text-align: center;
+    color: var(--cream);
+}
+
+.appts-hero h1 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    color: var(--cream);
+}
+
+.appts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    font-size: 0.875rem;
+    color: var(--gray-mid);
+}
+
+.appts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.appt-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+.appt-date-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, var(--rose), var(--deep-rose));
+    color: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 0.8rem 1rem;
+    min-width: 70px;
+    text-align: center;
+}
+
+.appt-day {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.appt-month {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.85;
+}
+
+.appt-time {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 0.3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 0.3rem;
+    width: 100%;
+    text-align: center;
+}
+
+.appt-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.appt-header-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.appt-header-row h3 {
+    font-size: 1.2rem;
+    color: var(--charcoal);
+}
+
+.appt-meta {
+    display: flex;
+    gap: 1.2rem;
+    font-size: 0.8rem;
+    color: var(--gray-mid);
+    flex-wrap: wrap;
+}
+
+.appt-notes {
+    font-size: 0.8rem;
+    color: #7A6E68;
+    font-style: italic;
+}
+
+.appt-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.empty-appts {
+    max-width: 420px;
+    margin: 4rem auto;
+    padding: 3.5rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.empty-icon {
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+}
+
+.empty-appts h3 {
+    font-size: 1.5rem;
+}
+
+.empty-appts p {
+    color: var(--gray-mid);
+}
+
+@media (max-width: 600px) {
+    .appt-card {
+        flex-wrap: wrap;
+    }
+
+    .appt-left {
+        width: 100%;
+    }
+
+    .appt-date-box {
+        flex-direction: row;
+        gap: 0.8rem;
+        min-width: auto;
+    }
+}

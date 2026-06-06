@@ -1,0 +1,204 @@
+.admin-hero {
+    background: linear-gradient(135deg, var(--soft-black) 0%, var(--charcoal) 100%);
+    padding: 4rem 0 3rem;
+    text-align: center;
+    color: var(--cream);
+}
+
+.admin-hero h1 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    color: var(--cream);
+}
+
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+    margin-bottom: 2.5rem;
+}
+
+.stat-box {
+    padding: 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.stat-box-num {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    line-height: 1;
+}
+
+.stat-box-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--rose);
+}
+
+.admin-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--gold-light);
+    padding-bottom: 0;
+}
+
+.admin-tab {
+    padding: 0.75rem 1.5rem;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    transition: var(--transition);
+    cursor: pointer;
+    margin-bottom: -1px;
+}
+
+.admin-tab:hover {
+    color: var(--charcoal);
+}
+
+.admin-tab.active {
+    color: var(--rose);
+    border-bottom-color: var(--rose);
+}
+
+.admin-section {
+    min-height: 300px;
+}
+
+.admin-table-wrap {
+    overflow-x: auto;
+    padding: 0;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.admin-table thead tr {
+    background: var(--gray-light);
+}
+
+.admin-table th {
+    padding: 0.85rem 1.2rem;
+    text-align: left;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--rose);
+    white-space: nowrap;
+}
+
+.admin-table td {
+    padding: 0.85rem 1.2rem;
+    border-bottom: 1px solid var(--gray-light);
+    color: var(--charcoal);
+    vertical-align: middle;
+}
+
+.admin-table td small {
+    color: var(--gray-mid);
+    font-size: 0.72rem;
+    display: block;
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-table tr:hover td {
+    background: rgba(250, 247, 242, 0.6);
+}
+
+.table-name {
+    font-weight: 500;
+}
+
+.status-select {
+    padding: 0.35rem 0.6rem;
+    border: 1px solid var(--gold-light);
+    border-radius: var(--radius);
+    background: var(--white);
+    font-size: 0.78rem;
+    color: var(--charcoal);
+    cursor: pointer;
+    font-family: var(--font-sans);
+}
+
+/* Two-col layout for forms */
+.admin-two-col {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.admin-form-card {
+    padding: 2rem;
+    position: sticky;
+    top: 90px;
+}
+
+.admin-form-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+    color: var(--charcoal);
+}
+
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.admin-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.admin-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.2rem;
+}
+
+.admin-list-item strong {
+    color: var(--charcoal);
+    display: block;
+}
+
+@media (max-width: 900px) {
+    .admin-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .admin-two-col {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-form-card {
+        position: static;
+    }
+}
+
+@media (max-width: 500px) {
+    .admin-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
