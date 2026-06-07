@@ -19,7 +19,7 @@ export default function Profile() {
         e.preventDefault();
         try {
             const result = await updateProfile(form).unwrap();
-            dispatch(updateUser({ name: result.name, phone: result.phone }));
+            dispatch(updateUser(result.user));
             setMsg('Profili u përditësua me sukses!');
             setTimeout(() => setMsg(''), 3000);
         } catch (err) {

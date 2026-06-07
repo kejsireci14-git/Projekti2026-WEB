@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRegisterMutation } from '../features/apiSlice';
 import { setCredentials } from '../features/authSlice';
-import { mapAuthResponse } from '../utils/helpers';
 import './Auth.css';
 
 export default function Register() {
@@ -35,7 +34,7 @@ export default function Register() {
         try {
             const { confirmPassword, ...data } = form;
             const result = await register(data).unwrap();
-            dispatch(setCredentials(mapAuthResponse(result)));
+            dispatch(setCredentials({ user: result.user, token: result.token }));
             navigate('/');
         } catch (err) {
             setError(err.data?.message || 'Regjistrimi dështoi. Provoni sërish.');

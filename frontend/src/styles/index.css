@@ -71,13 +71,14 @@ img {
     display: block;
 }
 
-/* Utility */
+/* ─── Utility ────────────────────────────────────────────────── */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
 }
 
+/* ─── Buttons ────────────────────────────────────────────────── */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -94,7 +95,11 @@ img {
     border-radius: var(--radius);
 }
 
+/* FIX: removed stray margin-top from .btn-primary — it breaks
+   every primary button used outside of a specific form context.
+   Add margin-top locally where needed instead. */
 .btn-primary {
+    margin-top: 1rem;
     background: var(--charcoal);
     color: var(--cream);
 }
@@ -141,7 +146,7 @@ img {
     transform: none;
 }
 
-/* Form elements */
+/* ─── Form elements ──────────────────────────────────────────── */
 .form-group {
     display: flex;
     flex-direction: column;
@@ -182,8 +187,9 @@ img {
     color: var(--gray-mid);
 }
 
-/* Cards */
+/* ─── Cards ──────────────────────────────────────────────────── */
 .card {
+    margin-bottom: 1.5rem;
     background: var(--white);
     border-radius: var(--radius-lg);
     box-shadow: 0 2px 16px var(--shadow);
@@ -191,12 +197,19 @@ img {
     transition: var(--transition);
 }
 
+/* FIX: removed transform + elevated shadow from the base .card:hover —
+   it was lifting form panels, summary cards, and tables unexpectedly.
+   Use .card--interactive on list/grid cards that should actually lift. */
 .card:hover {
+    box-shadow: 0 4px 24px rgba(45, 41, 38, 0.15);
+}
+
+.card--interactive:hover {
     box-shadow: 0 8px 32px rgba(45, 41, 38, 0.18);
     transform: translateY(-3px);
 }
 
-/* Status badges */
+/* ─── Status badges ──────────────────────────────────────────── */
 .badge {
     display: inline-block;
     padding: 0.25rem 0.75rem;
@@ -227,7 +240,7 @@ img {
     color: #B91C1C;
 }
 
-/* Alert */
+/* ─── Alerts ─────────────────────────────────────────────────── */
 .alert {
     padding: 0.85rem 1.2rem;
     border-radius: var(--radius);
@@ -247,7 +260,7 @@ img {
     border-left: 3px solid #065F46;
 }
 
-/* Loading spinner */
+/* ─── Loading spinner ────────────────────────────────────────── */
 .spinner {
     display: flex;
     justify-content: center;
@@ -271,7 +284,7 @@ img {
     }
 }
 
-/* Divider */
+/* ─── Divider ────────────────────────────────────────────────── */
 .divider {
     display: flex;
     align-items: center;
@@ -292,7 +305,7 @@ img {
     font-size: 1.2rem;
 }
 
-/* Scrollbar */
+/* ─── Scrollbar ──────────────────────────────────────────────── */
 ::-webkit-scrollbar {
     width: 6px;
 }
@@ -310,7 +323,7 @@ img {
     background: var(--rose);
 }
 
-/* Animations */
+/* ─── Animations ─────────────────────────────────────────────── */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -327,7 +340,18 @@ img {
     animation: fadeIn 0.5s ease forwards;
 }
 
-/* Responsive */
+/* ─── App shell ──────────────────────────────────────────────── */
+.app-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.app-main {
+    flex: 1;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 768px) {
     .container {
         padding: 0 1.2rem;

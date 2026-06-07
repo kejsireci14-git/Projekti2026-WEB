@@ -3,7 +3,6 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLoginMutation } from '../features/apiSlice';
 import { setCredentials } from '../features/authSlice';
-import { mapAuthResponse } from '../utils/helpers';
 import './Auth.css';
 
 export default function Login() {
@@ -32,7 +31,7 @@ export default function Login() {
         setError('');
         try {
             const result = await login(form).unwrap();
-            dispatch(setCredentials(mapAuthResponse(result)));
+            dispatch(setCredentials({ user: result.user, token: result.token }));
             navigate(from, { replace: true });
         } catch (err) {
             setError(err.data?.message || 'Kyçja dështoi. Provoni sërish.');

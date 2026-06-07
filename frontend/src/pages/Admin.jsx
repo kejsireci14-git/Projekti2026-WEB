@@ -5,7 +5,6 @@ import {
     useUpdateAppointmentMutation, useCreateServiceMutation, useCreateStaffMutation,
     useDeleteServiceMutation, useDeleteStaffMutation
 } from '../features/apiSlice';
-import { toList } from '../utils/helpers';
 import './Admin.css';
 
 const STATUS_OPTIONS = ['pending', 'confirmed', 'completed', 'cancelled'];
@@ -30,10 +29,6 @@ export default function Admin() {
 
     const [svcForm, setSvcForm] = useState(INIT_SERVICE);
     const [staffForm, setStaffForm] = useState(INIT_STAFF);
-
-    const appointments = toList(apptData);
-    const services = toList(svcData);
-    const staff = toList(staffData);
 
     const flash = (message) => { setMsg(message); setTimeout(() => setMsg(''), 3500); };
 
@@ -88,20 +83,20 @@ export default function Admin() {
                 {/* Stats */}
                 <div className="admin-stats">
                     <div className="stat-box card">
-                        <span className="stat-box-num">{appointments.length}</span>
+                        <span className="stat-box-num">{apptData?.data?.length || 0}</span>
                         <span className="stat-box-label">Rezervime</span>
                     </div>
                     <div className="stat-box card">
-                        <span className="stat-box-num">{services.length}</span>
+                        <span className="stat-box-num">{svcData?.data?.length || 0}</span>
                         <span className="stat-box-label">Shërbime</span>
                     </div>
                     <div className="stat-box card">
-                        <span className="stat-box-num">{staff.length}</span>
+                        <span className="stat-box-num">{staffData?.data?.length || 0}</span>
                         <span className="stat-box-label">Staf</span>
                     </div>
                     <div className="stat-box card">
                         <span className="stat-box-num">
-                            {appointments.filter(a => a.status === 'pending').length}
+                            {apptData?.data?.filter(a => a.status === 'pending').length || 0}
                         </span>
                         <span className="stat-box-label">Në Pritje</span>
                     </div>
@@ -133,7 +128,7 @@ export default function Admin() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {appointments.map(a => (
+                                        {apptData?.data?.map(a => (
                                             <tr key={a._id}>
                                                 <td>
                                                     <div className="table-name">{a.client?.name}</div>
@@ -203,7 +198,7 @@ export default function Admin() {
                                 </form>
                             </div>
                             <div className="admin-list">
-                                {loadSvcs ? <div className="spinner"></div> : services.map(s => (
+                                {loadSvcs ? <div className="spinner"></div> : svcData?.data?.map(s => (
                                     <div key={s._id} className="admin-list-item card">
                                         <div>
                                             <strong>{s.name}</strong>
@@ -246,7 +241,7 @@ export default function Admin() {
                                 </form>
                             </div>
                             <div className="admin-list">
-                                {loadStaff ? <div className="spinner"></div> : staff.map(m => (
+                                {loadStaff ? <div className="spinner"></div> : staffData?.data?.map(m => (
                                     <div key={m._id} className="admin-list-item card">
                                         <div>
                                             <strong>{m.name}</strong>

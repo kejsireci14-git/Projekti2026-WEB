@@ -1,24 +1,98 @@
+.appts-page {
+    min-height: 100vh;
+    background: var(--cream);
+}
+
 .appts-hero {
     background: linear-gradient(135deg, var(--charcoal) 0%, #3D3430 100%);
-    padding: 4rem 0 3rem;
+    padding: 5rem 0 4rem;
     text-align: center;
-    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+}
+
+.appts-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 15% 50%, rgba(196, 132, 107, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 85% 20%, rgba(201, 169, 110, 0.1) 0%, transparent 50%);
+}
+
+.appts-hero-content {
+    position: relative;
+    z-index: 1;
 }
 
 .appts-hero h1 {
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    color: var(--cream);
+    font-family: var(--font-serif);
+    color: var(--white);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin: 0.5rem 0 1rem;
 }
 
-.appts-header {
+.appts-hero-sub {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.95rem;
+    margin-bottom: 2.5rem;
+}
+
+.appts-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.appt-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.appt-stat-num {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1;
+}
+
+.appt-stat-label {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+.appt-stat-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Container */
+.appts-container {
+    padding: 3rem 2rem;
+}
+
+.appts-toolbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
-    font-size: 0.875rem;
-    color: var(--gray-mid);
 }
 
+.appts-count {
+    font-size: 0.85rem;
+    color: var(--gray-mid);
+    letter-spacing: 0.04em;
+}
+
+/* Appointment cards */
 .appts-list {
     display: flex;
     flex-direction: column;
@@ -26,10 +100,37 @@
 }
 
 .appt-card {
-    display: flex;
+    display: grid;
+    grid-template-columns: 90px 1fr 1fr 100px 160px;
     align-items: center;
     gap: 1.5rem;
-    padding: 1.5rem;
+    padding: 1.5rem 2rem;
+    border-left: 3px solid transparent;
+    transition: var(--transition);
+}
+
+.appt-pending {
+    border-left-color: #D4A017;
+}
+
+.appt-confirmed {
+    border-left-color: #4CAF50;
+}
+
+.appt-completed {
+    border-left-color: #7C83D6;
+}
+
+.appt-cancelled {
+    border-left-color: #E57373;
+}
+
+/* Date column */
+.appt-date-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
 }
 
 .appt-date-box {
@@ -39,9 +140,17 @@
     background: linear-gradient(135deg, var(--rose), var(--deep-rose));
     color: var(--white);
     border-radius: var(--radius-lg);
-    padding: 0.8rem 1rem;
-    min-width: 70px;
+    padding: 0.6rem 0.8rem;
+    width: 68px;
     text-align: center;
+}
+
+.appt-weekday {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.8;
 }
 
 .appt-day {
@@ -52,99 +161,233 @@
 }
 
 .appt-month {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 500;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     opacity: 0.85;
 }
 
-.appt-time {
-    font-size: 0.8rem;
+.appt-time-badge {
+    font-size: 0.72rem;
     font-weight: 600;
-    margin-top: 0.3rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
-    padding-top: 0.3rem;
-    width: 100%;
-    text-align: center;
+    color: var(--charcoal);
+    background: var(--gold-light);
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
 }
 
-.appt-body {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.appt-header-row {
+/* Service column */
+.appt-service-col {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
+    gap: 0.8rem;
 }
 
-.appt-header-row h3 {
-    font-size: 1.2rem;
+.appt-service-icon {
+    font-size: 1.8rem;
+    width: 44px;
+    height: 44px;
+    background: var(--gray-light);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.appt-service-name {
+    font-size: 1rem;
+    font-weight: 400;
     color: var(--charcoal);
+    font-family: var(--font-serif);
 }
 
-.appt-meta {
-    display: flex;
-    gap: 1.2rem;
-    font-size: 0.8rem;
+.appt-duration {
+    font-size: 0.75rem;
     color: var(--gray-mid);
-    flex-wrap: wrap;
+    margin-top: 0.1rem;
 }
 
-.appt-notes {
-    font-size: 0.8rem;
-    color: #7A6E68;
-    font-style: italic;
-}
-
-.appt-actions {
+/* Staff column */
+.appt-staff-col {
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.empty-appts {
-    max-width: 420px;
-    margin: 4rem auto;
-    padding: 3.5rem 2rem;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 0.7rem;
 }
 
-.empty-icon {
-    font-size: 2.5rem;
-    color: var(--gold);
+.appt-staff-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blush), var(--rose));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.appt-staff-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--charcoal);
+}
+
+.appt-staff-role {
+    font-size: 0.72rem;
+    color: var(--gray-mid);
+}
+
+/* Price column */
+.appt-price-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.appt-price {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    line-height: 1;
+}
+
+.appt-price-currency {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--gray-mid);
+}
+
+/* Status column */
+.appt-status-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.6rem;
+}
+
+.appt-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.status-icon {
+    font-size: 0.7rem;
+}
+
+.status-pending {
+    background: #FEF9C3;
+    color: #A16207;
+}
+
+.status-confirmed {
+    background: #D1FAE5;
+    color: #065F46;
+}
+
+.status-completed {
+    background: #E0E7FF;
+    color: #3730A3;
+}
+
+.status-cancelled {
+    background: #FEE2E2;
+    color: #B91C1C;
+}
+
+.appt-cancel-btn {
+    background: none;
+    border: 1px solid var(--gray-mid);
+    color: var(--gray-mid);
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--radius);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: var(--font-sans);
+}
+
+.appt-cancel-btn:hover {
+    border-color: #E57373;
+    color: #E57373;
+}
+
+/* Empty state */
+.empty-appts {
+    max-width: 440px;
+    margin: 4rem auto;
+    padding: 4rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.empty-appt-icon {
+    font-size: 3rem;
+    color: var(--gold-light);
     margin-bottom: 0.5rem;
 }
 
 .empty-appts h3 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    color: var(--charcoal);
 }
 
 .empty-appts p {
     color: var(--gray-mid);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+    .appt-card {
+        grid-template-columns: 80px 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 1rem;
+        padding: 1.2rem;
+    }
+
+    .appt-price-col {
+        align-items: flex-start;
+    }
+
+    .appt-status-col {
+        align-items: flex-start;
+    }
+
+    .appts-stats {
+        gap: 1.2rem;
+    }
 }
 
 @media (max-width: 600px) {
     .appt-card {
-        flex-wrap: wrap;
-    }
-
-    .appt-left {
-        width: 100%;
-    }
-
-    .appt-date-box {
-        flex-direction: row;
+        grid-template-columns: 70px 1fr;
         gap: 0.8rem;
-        min-width: auto;
+    }
+
+    .appt-staff-col {
+        display: none;
+    }
+
+    .appt-stat-num {
+        font-size: 1.5rem;
     }
 }
