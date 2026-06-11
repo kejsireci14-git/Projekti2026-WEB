@@ -31,7 +31,8 @@ export default function Login() {
         setError('');
         try {
             const result = await login(form).unwrap();
-            dispatch(setCredentials({ user: result.user, token: result.token }));
+            const { token, ...user } = result;
+            dispatch(setCredentials({ user, token }));
             navigate(from, { replace: true });
         } catch (err) {
             setError(err.data?.message || 'Kyçja dështoi. Provoni sërish.');

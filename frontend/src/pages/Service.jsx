@@ -97,15 +97,7 @@ export default function Service() {
                     <p className="section-eyebrow" style={{ color: 'var(--gold)' }}>Eksperience Premium</p>
                     <h1>Sherbimet Tona</h1>
                     <p className="services-hero-sub">Cdo sherbim i projektuar me kujdes per bukurine tuaj</p>
-                    <div className="services-hero-cats">
-                        {CATEGORIES.filter(c => c.value).map(c => (
-                            <button key={c.value}
-                                className={`hero-cat-btn ${category === c.value ? 'active' : ''}`}
-                                onClick={() => setCategory(c.value)}>
-                                {c.label}
-                            </button>
-                        ))}
-                    </div>
+                    
                 </div>
             </div>
 

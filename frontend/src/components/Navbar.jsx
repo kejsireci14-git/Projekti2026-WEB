@@ -9,6 +9,7 @@ export default function Navbar() {
     const navigate = useNavigate();
     const location = useLocation();
     const { isAuthenticated, user } = useSelector((state) => state.auth);
+    console.log('NAVBAR USER:', user);
     const [menuOpen, setMenuOpen] = useState(false);
 
     const handleLogout = () => {
@@ -44,7 +45,9 @@ export default function Navbar() {
                             )}
                             <li className="navbar-user">
                                 <Link to="/profile" onClick={() => setMenuOpen(false)}>
-                                    <div className="avatar">{user?.name?.[0]?.toUpperCase()}</div>
+                                    <div className="avatar">
+                                        {(user?.name?.[0] || user?.email?.[0] || '?').toUpperCase()}
+                                    </div>
                                 </Link>
                                 <button className="btn btn-outline btn-sm" onClick={handleLogout}>Dil</button>
                             </li>
