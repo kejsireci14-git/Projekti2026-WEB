@@ -27,6 +27,7 @@ app.get('/', (req, res) => {
   res.json({ success: true, message: 'Glamour Studio API is active!' });
 });
 
+
 app.use(errorHandler);
 
 module.exports = app;
