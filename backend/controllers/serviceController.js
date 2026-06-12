@@ -1,8 +1,6 @@
 const Service = require('../models/serviceModel');
 
-// @desc    Merr të gjitha shërbimet
-// @route   GET /api/services
-// @access  Public
+
 const getServices = async (req, res, next) => {
   try {
     const { category } = req.query;
@@ -16,9 +14,6 @@ const getServices = async (req, res, next) => {
   }
 };
 
-// @desc    Merr një shërbim me ID
-// @route   GET /api/services/:id
-// @access  Public
 const getService = async (req, res, next) => {
   try {
     const service = await Service.findById(req.params.id);
@@ -33,9 +28,7 @@ const getService = async (req, res, next) => {
   }
 };
 
-// @desc    Krijo shërbim të ri
-// @route   POST /api/services
-// @access  Private/Admin
+
 const createService = async (req, res, next) => {
   try {
     const service = await Service.create(req.body);
@@ -49,9 +42,7 @@ const createService = async (req, res, next) => {
   }
 };
 
-// @desc    Përditëso shërbim
-// @route   PUT /api/services/:id
-// @access  Private/Admin
+
 const updateService = async (req, res, next) => {
   try {
     const service = await Service.findByIdAndUpdate(req.params.id, req.body, {
@@ -73,9 +64,7 @@ const updateService = async (req, res, next) => {
   }
 };
 
-// @desc    Fshi shërbim
-// @route   DELETE /api/services/:id
-// @access  Private/Admin
+
 const deleteService = async (req, res, next) => {
   try {
     const service = await Service.findByIdAndDelete(req.params.id);

@@ -1,17 +1,17 @@
 const asyncHandler = require('express-async-handler');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-// Importing the User model to interact with the users collection in the database
+
 const User = require('../models/userModel');
 const registerUser = asyncHandler(async (req, res) => {
-  // Destructuring the name, email, password and phone from the request body
+  
   const { name, email, password, phone } = req.body;
-  // Check if all required fields are provided
+ 
   if (!name || !email || !password) {
     res.status(400);
     throw new Error('Please fill in all fields');
   }
-  // Check if a user with the provided email already exists in the database
+  
   const userExists = await User.findOne({ email });
   if (userExists) {
     res.status(400);

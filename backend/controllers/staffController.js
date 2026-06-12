@@ -1,8 +1,6 @@
 const Staff = require('../models/staffModel');
 
-// @desc    Merr të gjithë stafin
-// @route   GET /api/staff
-// @access  Public
+
 const getStaff = async (req, res, next) => {
   try {
     const staff = await Staff.find({ isAvailable: true }).sort('name');
@@ -12,9 +10,7 @@ const getStaff = async (req, res, next) => {
   }
 };
 
-// @desc    Merr një anëtar stafi
-// @route   GET /api/staff/:id
-// @access  Public
+
 const getStaffMember = async (req, res, next) => {
   try {
     const member = await Staff.findById(req.params.id);
@@ -29,9 +25,7 @@ const getStaffMember = async (req, res, next) => {
   }
 };
 
-// @desc    Shto anëtar stafi
-// @route   POST /api/staff
-// @access  Private/Admin
+
 const createStaff = async (req, res, next) => {
   try {
     const member = await Staff.create(req.body);
@@ -47,9 +41,7 @@ const createStaff = async (req, res, next) => {
   }
 };
 
-// @desc    Përditëso anëtarin e stafin
-// @route   PUT /api/staff/:id
-// @access  Private/Admin
+
 const updateStaff = async (req, res, next) => {
   try {
     const member = await Staff.findByIdAndUpdate(req.params.id, req.body, {
@@ -71,9 +63,7 @@ const updateStaff = async (req, res, next) => {
   }
 };
 
-// @desc    Fshi anëtarin e stafin
-// @route   DELETE /api/staff/:id
-// @access  Private/Admin
+
 const deleteStaff = async (req, res, next) => {
   try {
     const member = await Staff.findByIdAndDelete(req.params.id);

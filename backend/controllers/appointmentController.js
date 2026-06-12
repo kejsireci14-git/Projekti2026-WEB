@@ -1,9 +1,7 @@
 const Appointment = require('../models/appointmentModel');
 const Service = require('../models/serviceModel');
 
-// @desc    Merr rezervimet e përdoruesit
-// @route   GET /api/appointments
-// @access  Private
+
 const getAppointments = async (req, res, next) => {
   try {
     let query;
@@ -25,9 +23,7 @@ const getAppointments = async (req, res, next) => {
   }
 };
 
-// @desc    Merr një rezervim me ID
-// @route   GET /api/appointments/:id
-// @access  Private
+
 const getAppointment = async (req, res, next) => {
   try {
     const appointment = await Appointment.findById(req.params.id)
@@ -41,7 +37,7 @@ const getAppointment = async (req, res, next) => {
         .json({ success: false, message: 'Rezervimi nuk u gjet.' });
     }
 
-    // Kontrollo nëse është rezervimi i tij ose admin
+  
     if (
       appointment.client._id.toString() !== req.user._id.toString() &&
       req.user.role !== 'admin'
@@ -57,9 +53,6 @@ const getAppointment = async (req, res, next) => {
   }
 };
 
-// @desc    Krijo rezervim të ri
-// @route   POST /api/appointments
-// @access  Private
 const createAppointment = async (req, res, next) => {
   try {
     const { serviceId, staffId, date, timeSlot, notes } = req.body;
@@ -96,9 +89,7 @@ const createAppointment = async (req, res, next) => {
   }
 };
 
-// @desc    Përditëso statusin e rezervimit
-// @route   PUT /api/appointments/:id
-// @access  Private
+
 const updateAppointment = async (req, res, next) => {
   try {
     const appointment = await Appointment.findById(req.params.id);
@@ -108,7 +99,7 @@ const updateAppointment = async (req, res, next) => {
         .json({ success: false, message: 'Rezervimi nuk u gjet.' });
     }
 
-    // Vetëm admin mund të ndryshojë statusin
+   
     const updateData =
       req.user.role === 'admin' ? req.body : { notes: req.body.notes };
 
@@ -133,9 +124,7 @@ const updateAppointment = async (req, res, next) => {
   }
 };
 
-// @desc    Anulo/Fshi rezervimin
-// @route   DELETE /api/appointments/:id
-// @access  Private
+
 const deleteAppointment = async (req, res, next) => {
   try {
     const appointment = await Appointment.findById(req.params.id);

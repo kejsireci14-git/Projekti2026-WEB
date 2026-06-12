@@ -45,7 +45,8 @@ export default function Login() {
             <div className="auth-box card fade-in">
                 <div className="auth-header">
                     <div className="auth-logo">✦</div>
-                    <h1>Mirë u kthyet</h1>
+                    <h1>Pershendetje</h1>
+                    <h1>Mirë se vini</h1>
                     <p>Kyçuni në llogarinë tuaj</p>
                 </div>
 

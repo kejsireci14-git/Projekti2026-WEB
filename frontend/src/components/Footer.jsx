@@ -43,7 +43,7 @@ export default function Footer() {
                     <div className="footer-col">
                         <h4>Navigim</h4>
                         <ul>
-                            <li><Link to="/">Ballina</Link></li>
+                            <li><Link to="/">Home Page</Link></li>
                             <li><Link to="/services">Sherbimet</Link></li>
                             <li><Link to="/staff">Ekipi</Link></li>
                             <li><Link to="/appointments/new">Rezervo</Link></li>
